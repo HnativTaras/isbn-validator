@@ -51,6 +51,13 @@ class ISBNValidatorTest {
     }
 
     @Test
+    public void givenTenDigitInValidISBNThatEndingWithX_whenInValid_thenReturnFalse() {
+        ISBNValidator isbnValidator = new ISBNValidator();
+        boolean isTenDigitISBN = isbnValidator.checkISBN("112000030X");
+        assertFalse(isTenDigitISBN);
+    }
+
+    @Test
     public void givenNineDigitISBN_whenInvalid_thenThrowNumberFormatException() {
         ISBNValidator isbnValidator = new ISBNValidator();
         assertThrows(NumberFormatException.class, () -> isbnValidator.checkISBN("123456789"));
